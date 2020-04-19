@@ -13,6 +13,11 @@ app.use(cors());
 app.get("/api/products", (req, res) => {
   res.json(data.products);
 });
+app.get("/api/products/:id", (req, res) => {
+  const product = data.products.find((p) => p._id === req.params.id);
+  if (product) res.json(product);
+  else res.status(400).json({ msg: "product not found" });
+});
 
 const port = process.env.PORT || 8000;
 
