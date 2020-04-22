@@ -1,23 +1,22 @@
 const express = require("express");
 const cors = require("cors");
+const connectDb = require("./db/db-connect");
 
-const data = require("./data");
+const userRoute = require("./routes/userRoute");
+const productRoute = require("./routes/productRoute");
 
 const app = express();
 
+//connect-db
+connectDb();
+
 //middleware
-app.use(express.json({ extended: true }));
+app.use(express.json({ extended: false }));
 app.use(cors());
 
 //routes
-app.get("/api/products", (req, res) => {
-  res.json(data.products);
-});
-app.get("/api/products/:id", (req, res) => {
-  const product = data.products.find((p) => p._id === req.params.id);
-  if (product) res.json(product);
-  else res.status(400).json({ msg: "product not found" });
-});
+app.use("/api", userRoute);
+app.use("/api/products", productRoute);
 
 const port = process.env.PORT || 8000;
 

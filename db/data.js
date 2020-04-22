@@ -20,7 +20,7 @@ module.exports = {
       brand: " Nike",
       rating: 4.2,
       numReviews: 5,
-      countInStock: 6,
+      countInStock: 2,
     },
     {
       _id: "3",
@@ -31,7 +31,7 @@ module.exports = {
       brand: " Nike",
       rating: 4.5,
       numReviews: 8,
-      countInStock: 6,
+      countInStock: 0,
     },
     {
       _id: "4",
