@@ -4,6 +4,7 @@ const connectDb = require("./db/db-connect");
 
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
+const orderRoute = require("./routes/orderRoute");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors());
 //routes
 app.use("/api", userRoute);
 app.use("/api/products", productRoute);
+app.use("/api/orders", orderRoute);
 
 const port = process.env.PORT || 8000;
 
